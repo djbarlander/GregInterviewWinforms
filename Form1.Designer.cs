@@ -47,7 +47,7 @@
             this.gbStaffDetail = new System.Windows.Forms.GroupBox();
             this.cbStaffStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbManager = new System.Windows.Forms.ComboBox();
+            this.cbStaffType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtIRD = new System.Windows.Forms.TextBox();
             this.txtPhExt = new System.Windows.Forms.TextBox();
@@ -226,7 +226,7 @@
             // 
             this.gbStaffDetail.Controls.Add(this.cbStaffStatus);
             this.gbStaffDetail.Controls.Add(this.label6);
-            this.gbStaffDetail.Controls.Add(this.cbManager);
+            this.gbStaffDetail.Controls.Add(this.cbStaffType);
             this.gbStaffDetail.Controls.Add(this.label5);
             this.gbStaffDetail.Controls.Add(this.txtIRD);
             this.gbStaffDetail.Controls.Add(this.txtPhExt);
@@ -259,7 +259,7 @@
             // 
             // cbStaffStatus
             // 
-            this.cbStaffStatus.DisplayMember = "StaffStatusID";
+            this.cbStaffStatus.DisplayMember = "Title";
             this.cbStaffStatus.FormattingEnabled = true;
             this.cbStaffStatus.Location = new System.Drawing.Point(1274, 107);
             this.cbStaffStatus.Name = "cbStaffStatus";
@@ -276,15 +276,15 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Staff Status";
             // 
-            // cbManager
+            // cbStaffType
             // 
-            this.cbManager.DisplayMember = "Manager";
-            this.cbManager.FormattingEnabled = true;
-            this.cbManager.Location = new System.Drawing.Point(976, 105);
-            this.cbManager.Name = "cbManager";
-            this.cbManager.Size = new System.Drawing.Size(148, 28);
-            this.cbManager.TabIndex = 21;
-            this.cbManager.ValueMember = "ManagerID";
+            this.cbStaffType.DisplayMember = "Title";
+            this.cbStaffType.FormattingEnabled = true;
+            this.cbStaffType.Location = new System.Drawing.Point(976, 105);
+            this.cbStaffType.Name = "cbStaffType";
+            this.cbStaffType.Size = new System.Drawing.Size(148, 28);
+            this.cbStaffType.TabIndex = 21;
+            this.cbStaffType.ValueMember = "StaffTypeID";
             // 
             // label5
             // 
@@ -531,7 +531,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn iRDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn staffTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn staffStatusDataGridViewTextBoxColumn;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn managerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn managerDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource vwStaffBindingSource;
         private System.Windows.Forms.GroupBox gbStaffDetail;
         private System.Windows.Forms.Label lblTitle;
@@ -555,7 +555,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbManager;
+        private System.Windows.Forms.ComboBox cbStaffType;
         private System.Windows.Forms.ComboBox cbStaffStatus;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;

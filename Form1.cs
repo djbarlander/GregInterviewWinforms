@@ -17,8 +17,8 @@ namespace GregInterviewWinforms
         public StaffEntities db = new StaffEntities();
         private Staff staffDetail = null;
         private List<StaffTitle> staffTitles;
-        private List<StaffType> managerList;
-        private List<StaffStatu> staffStatusList;
+        private List<StaffType> StaffTypesList;
+        private List<StaffStatu> StaffStatusList;
 
         public Form1()
         {
@@ -29,10 +29,10 @@ namespace GregInterviewWinforms
         {
             staffTitles = db.StaffTitles.ToList();
             cbTitle.DataSource = staffTitles;
-            managerList = db.StaffTypes.ToList();
-            cbManager.DataSource = managerList;
-            staffStatusList = db.StaffStatus.ToList();
-            cbStaffStatus.DataSource = staffStatusList;
+            StaffTypesList = db.StaffTypes.ToList();
+            cbStaffType.DataSource = StaffTypesList;
+            StaffStatusList = db.StaffStatus.ToList();
+            cbStaffStatus.DataSource = StaffStatusList;
             bs.DataSource = db.vw_Staff.ToList();
             dgvMain.DataSource = bs;
             dgvMain.ClearSelection();
@@ -145,7 +145,7 @@ namespace GregInterviewWinforms
             txtPhCell.Text = staffDetail.PhCell;
             txtPhExt.Text = staffDetail.PhExt;
             txtIRD.Text = staffDetail.IRD;
-            //cbManager.SelectedValue = staffDetail.ManagerID;
+            cbStaffType.SelectedValue = staffDetail.StaffTypeID;
             cbStaffStatus.SelectedValue = staffDetail.StaffStatusID;
             SetGBStaffDetailReadOnly(true);
             btnEdit.Visible = true;
@@ -197,7 +197,7 @@ namespace GregInterviewWinforms
                     newStaff.PhCell = txtPhCell.Text;
                     newStaff.PhExt = txtPhExt.Text;
                     newStaff.IRD = txtIRD.Text;
-                    //newStaff.ManagerID = (int)cbManager.SelectedValue;
+                    newStaff.StaffTypeID = (int)cbStaffType.SelectedValue;
                     newStaff.StaffStatusID = (int)cbStaffStatus.SelectedValue;
                     db.Staffs.Add(newStaff);
                     MessageBox.Show("New staff member successfully created.");
@@ -214,7 +214,7 @@ namespace GregInterviewWinforms
                     staffDetail.PhCell = txtPhCell.Text;
                     staffDetail.PhExt = txtPhExt.Text;
                     staffDetail.IRD = txtIRD.Text;
-                    //staffDetail.ManagerID = (int)cbManager.SelectedValue;
+                    staffDetail.StaffTypeID = (int)cbStaffType.SelectedValue;
                     staffDetail.StaffStatusID = (int)cbStaffStatus.SelectedValue;
                     MessageBox.Show("Existing staff member successfully updated.");
                 }

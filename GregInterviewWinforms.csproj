@@ -66,11 +66,6 @@
     <Compile Include="Staff.cs">
       <DependentUpon>StaffModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="StaffDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StaffDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="StaffModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,17 +119,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StaffModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="StaffDataSet.xsc">
-      <DependentUpon>StaffDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="StaffDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>StaffDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="StaffDataSet.xss">
-      <DependentUpon>StaffDataSet.xsd</DependentUpon>
-    </None>
     <None Include="StaffModel.edmx.diagram">
       <DependentUpon>StaffModel.edmx</DependentUpon>
     </None>

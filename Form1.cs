@@ -191,7 +191,7 @@ namespace GregInterviewWinforms
                 if (staffDetail is null)
                 {
                     //Inserting a new Staff
-                    //TODO : make this work
+                    //TODO : optimise
                     var newStaff = new Staff();
                     newStaff.StaffTitleID = (int)cbTitle.SelectedValue;
                     newStaff.FirstName = txtFName.Text;
@@ -209,7 +209,7 @@ namespace GregInterviewWinforms
                 else
                 {
                     //Updating existing staff
-                    //TODO : make this work
+                    //TODO : optimise
                     staffDetail.StaffTitleID = (int)cbTitle.SelectedValue;
                     staffDetail.FirstName = txtFName.Text;
                     staffDetail.MiddleInitial = txtMInitial.Text;
@@ -241,13 +241,12 @@ namespace GregInterviewWinforms
             {
                 if (staffDetail != null)
                 {
-                    // Confirmation dialog before deleting
                     DialogResult result = MessageBox.Show("Are you sure you want to delete this staff member?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
                         // Deleting existing staff
-                        // TODO: make this work
+                        // TODO: optimise
                         db.Staffs.Remove(staffDetail);
                         db.SaveChanges();
 
@@ -294,5 +293,10 @@ namespace GregInterviewWinforms
         {
 
         }
+
+        /// <summary>
+        /// Blank Summary Template
+        /// </summary>
+        /// <param name="SpaceHolder"SpaceHolder>, otherwise Explanation</param>
     }
 }

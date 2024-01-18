@@ -235,6 +235,41 @@ namespace GregInterviewWinforms
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (staffDetail != null)
+                {
+                    // Confirmation dialog before deleting
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this staff member?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Deleting existing staff
+                        // TODO: make this work
+                        db.Staffs.Remove(staffDetail);
+                        db.SaveChanges();
+
+                        MessageBox.Show("Existing staff member successfully deleted.");
+                        ClearGBStaffDetail();
+                        btnSave.Visible = false;
+                        btnCancel.Visible = false;
+                        btnDelete.Visible = false;
+                        dgvMain.ClearSelection();
+                        staffDetail = null;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a staff member to delete.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting: {ex.Message}");
+            }
+        }
         private void btnNew_Click(object sender, EventArgs e)
         {
             dgvMain.ClearSelection();
@@ -252,10 +287,8 @@ namespace GregInterviewWinforms
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
+        
 
-        }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {

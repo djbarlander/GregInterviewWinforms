@@ -45,6 +45,7 @@
             this.btn_CSV = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gbStaffDetail = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.cbStaffStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbStaffType = new System.Windows.Forms.ComboBox();
@@ -69,7 +70,7 @@
             this.lblFName = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.cbTitle = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vwStaffBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -97,7 +98,7 @@
             this.staffTypeDataGridViewTextBoxColumn,
             this.staffStatusDataGridViewTextBoxColumn});
             this.dgvMain.DataSource = this.vwStaffBindingSource;
-            this.dgvMain.Location = new System.Drawing.Point(18, 18);
+            this.dgvMain.Location = new System.Drawing.Point(131, 70);
             this.dgvMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvMain.MultiSelect = false;
             this.dgvMain.Name = "dgvMain";
@@ -217,13 +218,14 @@
             this.btn_CSV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_CSV.Name = "btn_CSV";
             this.btn_CSV.Size = new System.Drawing.Size(112, 35);
-            this.btn_CSV.TabIndex = 3;
+            this.btn_CSV.TabIndex = 19;
             this.btn_CSV.Text = "Create CSV";
             this.btn_CSV.UseVisualStyleBackColor = false;
             this.btn_CSV.Click += new System.EventHandler(this.btn_CSV_Click);
             // 
             // gbStaffDetail
             // 
+            this.gbStaffDetail.Controls.Add(this.btnDelete);
             this.gbStaffDetail.Controls.Add(this.cbStaffStatus);
             this.gbStaffDetail.Controls.Add(this.label6);
             this.gbStaffDetail.Controls.Add(this.cbStaffType);
@@ -257,6 +259,18 @@
             this.gbStaffDetail.TabStop = false;
             this.gbStaffDetail.Text = "Staff Details";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Location = new System.Drawing.Point(609, 358);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(106, 35);
+            this.btnDelete.TabIndex = 18;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // cbStaffStatus
             // 
             this.cbStaffStatus.DisplayMember = "Title";
@@ -264,7 +278,7 @@
             this.cbStaffStatus.Location = new System.Drawing.Point(1274, 107);
             this.cbStaffStatus.Name = "cbStaffStatus";
             this.cbStaffStatus.Size = new System.Drawing.Size(163, 28);
-            this.cbStaffStatus.TabIndex = 23;
+            this.cbStaffStatus.TabIndex = 13;
             this.cbStaffStatus.ValueMember = "StaffStatusID";
             // 
             // label6
@@ -283,7 +297,7 @@
             this.cbStaffType.Location = new System.Drawing.Point(976, 105);
             this.cbStaffType.Name = "cbStaffType";
             this.cbStaffType.Size = new System.Drawing.Size(148, 28);
-            this.cbStaffType.TabIndex = 21;
+            this.cbStaffType.TabIndex = 12;
             this.cbStaffType.ValueMember = "StaffTypeID";
             // 
             // label5
@@ -300,14 +314,14 @@
             this.txtIRD.Location = new System.Drawing.Point(696, 107);
             this.txtIRD.Name = "txtIRD";
             this.txtIRD.Size = new System.Drawing.Size(148, 26);
-            this.txtIRD.TabIndex = 19;
+            this.txtIRD.TabIndex = 11;
             // 
             // txtPhExt
             // 
             this.txtPhExt.Location = new System.Drawing.Point(444, 107);
             this.txtPhExt.Name = "txtPhExt";
             this.txtPhExt.Size = new System.Drawing.Size(100, 26);
-            this.txtPhExt.TabIndex = 18;
+            this.txtPhExt.TabIndex = 10;
             // 
             // label4
             // 
@@ -332,7 +346,7 @@
             this.txtPhCell.Location = new System.Drawing.Point(100, 107);
             this.txtPhCell.Name = "txtPhCell";
             this.txtPhCell.Size = new System.Drawing.Size(158, 26);
-            this.txtPhCell.TabIndex = 15;
+            this.txtPhCell.TabIndex = 9;
             // 
             // label2
             // 
@@ -349,7 +363,7 @@
             this.txtPhHome.Location = new System.Drawing.Point(1274, 29);
             this.txtPhHome.Name = "txtPhHome";
             this.txtPhHome.Size = new System.Drawing.Size(163, 26);
-            this.txtPhHome.TabIndex = 13;
+            this.txtPhHome.TabIndex = 8;
             // 
             // label1
             // 
@@ -367,7 +381,7 @@
             this.btnNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(112, 35);
-            this.btnNew.TabIndex = 11;
+            this.btnNew.TabIndex = 14;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -379,7 +393,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(112, 35);
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -391,7 +405,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 35);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -403,7 +417,7 @@
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(112, 35);
-            this.btnEdit.TabIndex = 8;
+            this.btnEdit.TabIndex = 15;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -483,22 +497,23 @@
             this.cbTitle.TabIndex = 0;
             this.cbTitle.ValueMember = "StaffTitleID";
             // 
-            // button1
+            // btnPrint
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Window;
-            this.button1.Location = new System.Drawing.Point(230, 1003);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 29);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Print List";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnPrint.BackColor = System.Drawing.SystemColors.Window;
+            this.btnPrint.Location = new System.Drawing.Point(230, 1003);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(125, 29);
+            this.btnPrint.TabIndex = 20;
+            this.btnPrint.Text = "Print List";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2032, 1128);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.gbStaffDetail);
             this.Controls.Add(this.btn_CSV);
             this.Controls.Add(this.dgvMain);
@@ -558,7 +573,8 @@
         private System.Windows.Forms.ComboBox cbStaffType;
         private System.Windows.Forms.ComboBox cbStaffStatus;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

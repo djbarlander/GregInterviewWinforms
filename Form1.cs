@@ -40,6 +40,7 @@ namespace GregInterviewWinforms
             btnEdit.Visible = false;
             btnSave.Visible = false;
             btnNew.Visible = true;
+            btnDelete.Visible = false;
             SetGBStaffDetailReadOnly(true);
         }
 
@@ -159,6 +160,7 @@ namespace GregInterviewWinforms
             btnEdit.Visible = false;
             btnCancel.Visible = true;
             btnSave.Visible = true;
+            btnDelete.Visible = true;
             SetGBStaffDetailReadOnly(false);
         }
 
@@ -168,11 +170,13 @@ namespace GregInterviewWinforms
             {
                 ClearGBStaffDetail();
                 btnEdit.Visible = false;
+                btnDelete.Visible = false;
             }
             else
             {
                 PopulateStaffGroup();
                 btnEdit.Visible = true;
+                btnDelete.Visible = false;
             }
             SetGBStaffDetailReadOnly(true);
             btnCancel.Visible = false;
@@ -240,9 +244,20 @@ namespace GregInterviewWinforms
             btnSave.Visible = true;
             btnNew.Visible = false;
             btnCancel.Visible = true;
+            btnDelete.Visible = false;
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
         {
 
         }

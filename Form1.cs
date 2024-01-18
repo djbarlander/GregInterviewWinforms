@@ -25,6 +25,15 @@ namespace GregInterviewWinforms
             InitializeComponent();
         }
 
+        private void RefreshDataGridView()
+        {
+            bs.DataSource = db.vw_Staff.ToList();
+            dgvMain.DataSource = bs;
+            dgvMain.ClearSelection();
+
+            //dgvMain.ResetBindings();
+            //bs.ResetBindings(false);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             staffTitles = db.StaffTitles.ToList();
@@ -205,6 +214,8 @@ namespace GregInterviewWinforms
                     newStaff.StaffStatusID = (int)cbStaffStatus.SelectedValue;
                     db.Staffs.Add(newStaff);
                     MessageBox.Show("New staff member successfully created.");
+
+                    RefreshDataGridView();
                 }
                 else
                 {
@@ -223,10 +234,13 @@ namespace GregInterviewWinforms
                     MessageBox.Show("Existing staff member successfully updated.");
                 }
                 db.SaveChanges();
+                RefreshDataGridView();
                 ClearGBStaffDetail();
                 btnSave.Visible = false;
                 btnCancel.Visible = false;
+                btnDelete.Visible = false;
                 dgvMain.ClearSelection();
+                SetGBStaffDetailReadOnly(false);
                 staffDetail = null;
             }
             catch (Exception ex)
@@ -251,11 +265,16 @@ namespace GregInterviewWinforms
                         db.SaveChanges();
 
                         MessageBox.Show("Existing staff member successfully deleted.");
+
+                        RefreshDataGridView();
+
                         ClearGBStaffDetail();
+                        btnNew.Visible = true;
                         btnSave.Visible = false;
                         btnCancel.Visible = false;
                         btnDelete.Visible = false;
                         dgvMain.ClearSelection();
+                        SetGBStaffDetailReadOnly(true);
                         staffDetail = null;
                     }
                 }
@@ -297,6 +316,6 @@ namespace GregInterviewWinforms
         /// <summary>
         /// Blank Summary Template
         /// </summary>
-        /// <param name="SpaceHolder"SpaceHolder>, otherwise Explanation</param>
+        /// <param name="SpaceHolder"SpaceHolder>, otherwise Read/Write</param>
     }
 }

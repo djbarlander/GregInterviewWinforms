@@ -90,6 +90,9 @@
     <Compile Include="StaffType.cs">
       <DependentUpon>StaffModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="vw_Manager.cs">
+      <DependentUpon>StaffModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="vw_Staff.cs">
       <DependentUpon>StaffModel.tt</DependentUpon>
     </Compile>

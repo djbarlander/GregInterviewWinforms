@@ -5,14 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a9845c2fc4cc437db8c1ec320f21aa6d" Name="Diagram1">
-        <EntityTypeShape EntityType="StaffModel.Staff" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="StaffModel.StaffStatu" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="StaffModel.StaffType" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="StaffModel.vw_Staff" Width="1.5" PointX="6.125" PointY="2.125" IsExpanded="true" />
-        <AssociationConnector Association="StaffModel.FK_Staff_StaffStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="StaffModel.FK_Staff_StaffType" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="StaffModel.StaffTitle" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="StaffModel.Staff" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="StaffModel.StaffStatu" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="StaffModel.StaffTitle" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="StaffModel.StaffType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StaffModel.vw_Manager" Width="1.5" PointX="5.75" PointY="2.125" />
+        <EntityTypeShape EntityType="StaffModel.vw_Staff" Width="1.5" PointX="2.75" PointY="7.125" />
+        <AssociationConnector Association="StaffModel.FK_Staff_StaffStatus" />
         <AssociationConnector Association="StaffModel.FK_Staff_StaffTitle" />
+        <AssociationConnector Association="StaffModel.FK_Staff_StaffType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

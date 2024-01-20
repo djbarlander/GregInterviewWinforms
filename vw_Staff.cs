@@ -15,19 +15,19 @@ namespace GregInterviewWinforms
     public partial class vw_Staff
     {
         public int StaffID { get; set; }
-        public int StaffTypeID { get; set; }
-        public string StaffType { get; set; }
         public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int StaffStatusID { get; set; }
-        public string StaffStatus { get; set; }
         public string MiddleInitial { get; set; }
+        public string LastName { get; set; }
         public string PhHome { get; set; }
         public string PhCell { get; set; }
         public string PhExt { get; set; }
         public string IRD { get; set; }
         public int StaffTitleID { get; set; }
         public string StaffTitle { get; set; }
+        public int StaffTypeID { get; set; }
+        public string StaffType { get; set; }
+        public int StaffStatusID { get; set; }
+        public string StaffStatus { get; set; }
         public string ManagerName { get; set; }
     }
 }

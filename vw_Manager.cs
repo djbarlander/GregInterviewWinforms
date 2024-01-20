@@ -12,9 +12,10 @@ namespace GregInterviewWinforms
     using System;
     using System.Collections.Generic;
     
-    public partial class Staff
+    public partial class vw_Manager
     {
         public int StaffID { get; set; }
+        public string ManagerName { get; set; }
         public string FirstName { get; set; }
         public string MiddleInitial { get; set; }
         public string LastName { get; set; }
@@ -22,13 +23,7 @@ namespace GregInterviewWinforms
         public string PhCell { get; set; }
         public string PhExt { get; set; }
         public string IRD { get; set; }
-        public int StaffTitleID { get; set; }
         public int StaffStatusID { get; set; }
-        public int StaffTypeID { get; set; }
-        public Nullable<int> ManagerID { get; set; }
-    
-        public virtual StaffStatu StaffStatu { get; set; }
-        public virtual StaffTitle StaffTitle { get; set; }
-        public virtual StaffType StaffType { get; set; }
+        public string StaffStatus { get; set; }
     }
 }

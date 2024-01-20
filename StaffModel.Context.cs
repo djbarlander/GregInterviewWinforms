@@ -27,8 +27,9 @@ namespace GregInterviewWinforms
     
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<StaffStatu> StaffStatus { get; set; }
-        public virtual DbSet<StaffType> StaffTypes { get; set; }
-        public virtual DbSet<vw_Staff> vw_Staff { get; set; }
         public virtual DbSet<StaffTitle> StaffTitles { get; set; }
+        public virtual DbSet<StaffType> StaffTypes { get; set; }
+        public virtual DbSet<vw_Manager> vw_Manager { get; set; }
+        public virtual DbSet<vw_Staff> vw_Staff { get; set; }
     }
 }

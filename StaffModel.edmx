@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="StaffID" />
           </Key>
-          <Property Name="StaffID" Type="int" Nullable="false" />
+          <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MiddleInitial" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -26,22 +26,49 @@
           <Key>
             <PropertyRef Name="StaffStatusID" />
           </Key>
-          <Property Name="StaffStatusID" Type="int" Nullable="false" />
+          <Property Name="StaffStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="StaffTitle">
           <Key>
             <PropertyRef Name="StaffTitleID" />
           </Key>
-          <Property Name="StaffTitleID" Type="int" Nullable="false" />
+          <Property Name="StaffTitleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="StaffType">
           <Key>
             <PropertyRef Name="StaffTypeID" />
           </Key>
-          <Property Name="StaffTypeID" Type="int" Nullable="false" />
+          <Property Name="StaffTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Staff.dbo.vw_Manager' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Manager">
+          <Key>
+            <PropertyRef Name="StaffID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="MiddleInitial" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="PhHome" />
+            <PropertyRef Name="PhCell" />
+            <PropertyRef Name="PhExt" />
+            <PropertyRef Name="IRD" />
+            <PropertyRef Name="StaffStatusID" />
+            <PropertyRef Name="StaffStatus" />
+          </Key>
+          <Property Name="StaffID" Type="int" Nullable="false" />
+          <Property Name="ManagerName" Type="nvarchar" MaxLength="133" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleInitial" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhHome" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PhCell" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PhExt" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IRD" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="StaffStatusID" Type="int" Nullable="false" />
+          <Property Name="StaffStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -49,7 +76,7 @@ warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key de
           <Key>
             <PropertyRef Name="StaffID" />
             <PropertyRef Name="FirstName" />
-            
+            <PropertyRef Name="MiddleInitial" />
             <PropertyRef Name="LastName" />
             <PropertyRef Name="PhHome" />
             <PropertyRef Name="PhCell" />
@@ -119,6 +146,21 @@ warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key de
           <EntitySet Name="StaffStatus" EntityType="Self.StaffStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffTitle" EntityType="Self.StaffTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffType" EntityType="Self.StaffType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Manager" EntityType="Self.vw_Manager" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Manager].[StaffID] AS [StaffID], 
+    [vw_Manager].[ManagerName] AS [ManagerName], 
+    [vw_Manager].[FirstName] AS [FirstName], 
+    [vw_Manager].[MiddleInitial] AS [MiddleInitial], 
+    [vw_Manager].[LastName] AS [LastName], 
+    [vw_Manager].[PhHome] AS [PhHome], 
+    [vw_Manager].[PhCell] AS [PhCell], 
+    [vw_Manager].[PhExt] AS [PhExt], 
+    [vw_Manager].[IRD] AS [IRD], 
+    [vw_Manager].[StaffStatusID] AS [StaffStatusID], 
+    [vw_Manager].[StaffStatus] AS [StaffStatus]
+    FROM [dbo].[vw_Manager] AS [vw_Manager]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_Staff" EntityType="Self.vw_Staff" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_Staff].[StaffID] AS [StaffID], 
@@ -155,79 +197,133 @@ warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key de
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StaffModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StaffEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Staffs" EntityType="StaffModel.Staff" />
+          <EntitySet Name="StaffStatus" EntityType="StaffModel.StaffStatu" />
+          <EntitySet Name="StaffTitles" EntityType="StaffModel.StaffTitle" />
+          <EntitySet Name="StaffTypes" EntityType="StaffModel.StaffType" />
+          <EntitySet Name="vw_Manager" EntityType="StaffModel.vw_Manager" />
+          <EntitySet Name="vw_Staff" EntityType="StaffModel.vw_Staff" />
+          <AssociationSet Name="FK_Staff_StaffStatus" Association="StaffModel.FK_Staff_StaffStatus">
+            <End Role="StaffStatu" EntitySet="StaffStatus" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffTitle" Association="StaffModel.FK_Staff_StaffTitle">
+            <End Role="StaffTitle" EntitySet="StaffTitles" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StaffType" Association="StaffModel.FK_Staff_StaffType">
+            <End Role="StaffType" EntitySet="StaffTypes" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="StaffID" />
           </Key>
-          <Property Name="StaffID" Type="Int32" Nullable="false" />
-          <Property Name="StaffTypeID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StaffStatusID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="StaffStatu" Relationship="Self.FK_Staff_StaffStatus" FromRole="Staff" ToRole="StaffStatus" />
-          <NavigationProperty Name="StaffType" Relationship="Self.FK_Staff_StaffType" FromRole="Staff" ToRole="StaffType" />
-          <Property Name="MiddleInitial" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleInitial" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PhHome" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PhCell" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PhExt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="IRD" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="StaffTitleID" Type="Int32" Nullable="false" />
+          <Property Name="StaffStatusID" Type="Int32" Nullable="false" />
+          <Property Name="StaffTypeID" Type="Int32" Nullable="false" />
           <Property Name="ManagerID" Type="Int32" />
+          <NavigationProperty Name="StaffStatu" Relationship="StaffModel.FK_Staff_StaffStatus" FromRole="Staff" ToRole="StaffStatu" />
           <NavigationProperty Name="StaffTitle" Relationship="StaffModel.FK_Staff_StaffTitle" FromRole="Staff" ToRole="StaffTitle" />
+          <NavigationProperty Name="StaffType" Relationship="StaffModel.FK_Staff_StaffType" FromRole="Staff" ToRole="StaffType" />
         </EntityType>
         <EntityType Name="StaffStatu">
           <Key>
             <PropertyRef Name="StaffStatusID" />
           </Key>
-          <Property Name="StaffStatusID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_StaffStatus" FromRole="StaffStatus" ToRole="Staff" />
+          <Property Name="StaffStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staffs" Relationship="StaffModel.FK_Staff_StaffStatus" FromRole="StaffStatu" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="StaffTitle">
+          <Key>
+            <PropertyRef Name="StaffTitleID" />
+          </Key>
+          <Property Name="StaffTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staffs" Relationship="StaffModel.FK_Staff_StaffTitle" FromRole="StaffTitle" ToRole="Staff" />
         </EntityType>
         <EntityType Name="StaffType">
           <Key>
             <PropertyRef Name="StaffTypeID" />
           </Key>
-          <Property Name="StaffTypeID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_StaffType" FromRole="StaffType" ToRole="Staff" />
+          <Property Name="StaffTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staffs" Relationship="StaffModel.FK_Staff_StaffType" FromRole="StaffType" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="vw_Manager">
+          <Key>
+            <PropertyRef Name="StaffID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="MiddleInitial" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="PhHome" />
+            <PropertyRef Name="PhCell" />
+            <PropertyRef Name="PhExt" />
+            <PropertyRef Name="IRD" />
+            <PropertyRef Name="StaffStatusID" />
+            <PropertyRef Name="StaffStatus" />
+          </Key>
+          <Property Name="StaffID" Type="Int32" Nullable="false" />
+          <Property Name="ManagerName" Type="String" MaxLength="133" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleInitial" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhHome" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PhCell" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PhExt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IRD" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="StaffStatusID" Type="Int32" Nullable="false" />
+          <Property Name="StaffStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vw_Staff">
           <Key>
             <PropertyRef Name="StaffID" />
-            <PropertyRef Name="StaffTypeID" />
-            <PropertyRef Name="StaffType" />
             <PropertyRef Name="FirstName" />
+            <PropertyRef Name="MiddleInitial" />
             <PropertyRef Name="LastName" />
-            <PropertyRef Name="StaffStatusID" />
-            <PropertyRef Name="StaffStatus" />
             <PropertyRef Name="PhHome" />
             <PropertyRef Name="PhCell" />
             <PropertyRef Name="PhExt" />
             <PropertyRef Name="IRD" />
             <PropertyRef Name="StaffTitleID" />
             <PropertyRef Name="StaffTitle" />
+            <PropertyRef Name="StaffTypeID" />
+            <PropertyRef Name="StaffType" />
+            <PropertyRef Name="StaffStatusID" />
+            <PropertyRef Name="StaffStatus" />
           </Key>
           <Property Name="StaffID" Type="Int32" Nullable="false" />
-          <Property Name="StaffTypeID" Type="Int32" Nullable="false" />
-          <Property Name="StaffType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StaffStatusID" Type="Int32" Nullable="false" />
-          <Property Name="StaffStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleInitial" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleInitial" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PhHome" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PhCell" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PhExt" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="IRD" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="StaffTitleID" Type="Int32" Nullable="false" />
           <Property Name="StaffTitle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StaffTypeID" Type="Int32" Nullable="false" />
+          <Property Name="StaffType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StaffStatusID" Type="Int32" Nullable="false" />
+          <Property Name="StaffStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ManagerName" Type="String" MaxLength="133" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Staff_StaffStatus">
-          <End Role="StaffStatus" Type="Self.StaffStatu" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <End Type="StaffModel.StaffStatu" Role="StaffStatu" Multiplicity="1" />
+          <End Type="StaffModel.Staff" Role="Staff" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="StaffStatus">
+            <Principal Role="StaffStatu">
               <PropertyRef Name="StaffStatusID" />
             </Principal>
             <Dependent Role="Staff">
@@ -235,45 +331,6 @@ warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Staff_StaffType">
-          <End Role="StaffType" Type="Self.StaffType" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StaffType">
-              <PropertyRef Name="StaffTypeID" />
-            </Principal>
-            <Dependent Role="Staff">
-              <PropertyRef Name="StaffTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="StaffEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Staffs" EntityType="Self.Staff" />
-          <EntitySet Name="StaffStatus" EntityType="Self.StaffStatu" />
-          <EntitySet Name="StaffTypes" EntityType="Self.StaffType" />
-          <EntitySet Name="vw_Staff" EntityType="Self.vw_Staff" />
-          <AssociationSet Name="FK_Staff_StaffStatus" Association="Self.FK_Staff_StaffStatus">
-            <End Role="StaffStatus" EntitySet="StaffStatus" />
-            <End Role="Staff" EntitySet="Staffs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Staff_StaffType" Association="Self.FK_Staff_StaffType">
-            <End Role="StaffType" EntitySet="StaffTypes" />
-            <End Role="Staff" EntitySet="Staffs" />
-          </AssociationSet>
-          <EntitySet Name="StaffTitles" EntityType="StaffModel.StaffTitle" />
-          <AssociationSet Name="FK_Staff_StaffTitle" Association="StaffModel.FK_Staff_StaffTitle">
-            <End Role="StaffTitle" EntitySet="StaffTitles" />
-            <End Role="Staff" EntitySet="Staffs" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="StaffTitle">
-          <Key>
-            <PropertyRef Name="StaffTitleID" />
-          </Key>
-          <Property Name="StaffTitleID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Staffs" Relationship="StaffModel.FK_Staff_StaffTitle" FromRole="StaffTitle" ToRole="Staff" />
-        </EntityType>
         <Association Name="FK_Staff_StaffTitle">
           <End Type="StaffModel.StaffTitle" Role="StaffTitle" Multiplicity="1" />
           <End Type="StaffModel.Staff" Role="Staff" Multiplicity="*" />
@@ -283,6 +340,18 @@ warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key de
             </Principal>
             <Dependent Role="Staff">
               <PropertyRef Name="StaffTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StaffType">
+          <End Type="StaffModel.StaffType" Role="StaffType" Multiplicity="1" />
+          <End Type="StaffModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffType">
+              <PropertyRef Name="StaffTypeID" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="StaffTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -296,54 +365,25 @@ warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key de
             <EntityTypeMapping TypeName="StaffModel.Staff">
               <MappingFragment StoreEntitySet="Staff">
                 <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="StaffTypeID" ColumnName="StaffTypeID" />
+                <ScalarProperty Name="StaffStatusID" ColumnName="StaffStatusID" />
                 <ScalarProperty Name="StaffTitleID" ColumnName="StaffTitleID" />
                 <ScalarProperty Name="IRD" ColumnName="IRD" />
                 <ScalarProperty Name="PhExt" ColumnName="PhExt" />
                 <ScalarProperty Name="PhCell" ColumnName="PhCell" />
                 <ScalarProperty Name="PhHome" ColumnName="PhHome" />
-                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
-                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-                <ScalarProperty Name="StaffTypeID" ColumnName="StaffTypeID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="StaffStatusID" ColumnName="StaffStatusID" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StaffStatus">
             <EntityTypeMapping TypeName="StaffModel.StaffStatu">
               <MappingFragment StoreEntitySet="StaffStatus">
-                <ScalarProperty Name="StaffStatusID" ColumnName="StaffStatusID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StaffTypes">
-            <EntityTypeMapping TypeName="StaffModel.StaffType">
-              <MappingFragment StoreEntitySet="StaffType">
-                <ScalarProperty Name="StaffTypeID" ColumnName="StaffTypeID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_Staff">
-            <EntityTypeMapping TypeName="StaffModel.vw_Staff">
-              <MappingFragment StoreEntitySet="vw_Staff">
-                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
-                <ScalarProperty Name="StaffTitle" ColumnName="StaffTitle" />
-                <ScalarProperty Name="StaffTitleID" ColumnName="StaffTitleID" />
-                <ScalarProperty Name="IRD" ColumnName="IRD" />
-                <ScalarProperty Name="PhExt" ColumnName="PhExt" />
-                <ScalarProperty Name="PhCell" ColumnName="PhCell" />
-                <ScalarProperty Name="PhHome" ColumnName="PhHome" />
-                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
-                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-                <ScalarProperty Name="StaffTypeID" ColumnName="StaffTypeID" />
-                <ScalarProperty Name="StaffType" ColumnName="StaffType" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="StaffStatusID" ColumnName="StaffStatusID" />
-                <ScalarProperty Name="StaffStatus" ColumnName="StaffStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -352,6 +392,52 @@ warning 6002: The table/view 'Staff.dbo.vw_Staff' does not have a primary key de
               <MappingFragment StoreEntitySet="StaffTitle">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="StaffTitleID" ColumnName="StaffTitleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffTypes">
+            <EntityTypeMapping TypeName="StaffModel.StaffType">
+              <MappingFragment StoreEntitySet="StaffType">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="StaffTypeID" ColumnName="StaffTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Manager">
+            <EntityTypeMapping TypeName="StaffModel.vw_Manager">
+              <MappingFragment StoreEntitySet="vw_Manager">
+                <ScalarProperty Name="StaffStatus" ColumnName="StaffStatus" />
+                <ScalarProperty Name="StaffStatusID" ColumnName="StaffStatusID" />
+                <ScalarProperty Name="IRD" ColumnName="IRD" />
+                <ScalarProperty Name="PhExt" ColumnName="PhExt" />
+                <ScalarProperty Name="PhCell" ColumnName="PhCell" />
+                <ScalarProperty Name="PhHome" ColumnName="PhHome" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Staff">
+            <EntityTypeMapping TypeName="StaffModel.vw_Staff">
+              <MappingFragment StoreEntitySet="vw_Staff">
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="StaffStatus" ColumnName="StaffStatus" />
+                <ScalarProperty Name="StaffStatusID" ColumnName="StaffStatusID" />
+                <ScalarProperty Name="StaffType" ColumnName="StaffType" />
+                <ScalarProperty Name="StaffTypeID" ColumnName="StaffTypeID" />
+                <ScalarProperty Name="StaffTitle" ColumnName="StaffTitle" />
+                <ScalarProperty Name="StaffTitleID" ColumnName="StaffTitleID" />
+                <ScalarProperty Name="IRD" ColumnName="IRD" />
+                <ScalarProperty Name="PhExt" ColumnName="PhExt" />
+                <ScalarProperty Name="PhCell" ColumnName="PhCell" />
+                <ScalarProperty Name="PhHome" ColumnName="PhHome" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

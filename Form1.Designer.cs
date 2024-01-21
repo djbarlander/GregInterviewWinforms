@@ -41,9 +41,7 @@
             this.iRDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vwStaffBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_CSV = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gbStaffDetail = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.cbStaffStatus = new System.Windows.Forms.ComboBox();
@@ -71,10 +69,16 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.cbTitle = new System.Windows.Forms.ComboBox();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.vwStaffBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gbManagerDetail = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbManager = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwStaffBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.gbStaffDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwStaffBindingSource)).BeginInit();
+            this.gbManagerDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMain
@@ -82,7 +86,6 @@
             this.dgvMain.AllowUserToAddRows = false;
             this.dgvMain.AllowUserToDeleteRows = false;
             this.dgvMain.AllowUserToResizeRows = false;
-            this.dgvMain.AutoGenerateColumns = false;
             this.dgvMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -97,7 +100,6 @@
             this.iRDDataGridViewTextBoxColumn,
             this.staffTypeDataGridViewTextBoxColumn,
             this.staffStatusDataGridViewTextBoxColumn});
-            this.dgvMain.DataSource = this.vwStaffBindingSource;
             this.dgvMain.Location = new System.Drawing.Point(131, 70);
             this.dgvMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvMain.MultiSelect = false;
@@ -206,10 +208,6 @@
             this.staffStatusDataGridViewTextBoxColumn.Name = "staffStatusDataGridViewTextBoxColumn";
             this.staffStatusDataGridViewTextBoxColumn.ReadOnly = true;
             this.staffStatusDataGridViewTextBoxColumn.Width = 127;
-            // 
-            // vwStaffBindingSource
-            // 
-            this.vwStaffBindingSource.DataSource = typeof(GregInterviewWinforms.vw_Staff);
             // 
             // btn_CSV
             // 
@@ -508,11 +506,45 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // vwStaffBindingSource
+            // 
+            this.vwStaffBindingSource.DataSource = typeof(GregInterviewWinforms.vw_Staff);
+            // 
+            // gbManagerDetail
+            // 
+            this.gbManagerDetail.Controls.Add(this.label7);
+            this.gbManagerDetail.Controls.Add(this.cbManager);
+            this.gbManagerDetail.Location = new System.Drawing.Point(18, 742);
+            this.gbManagerDetail.Name = "gbManagerDetail";
+            this.gbManagerDetail.Size = new System.Drawing.Size(1112, 250);
+            this.gbManagerDetail.TabIndex = 21;
+            this.gbManagerDetail.TabStop = false;
+            this.gbManagerDetail.Text = "Manager Details";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 20);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Manager";
+            // 
+            // cbManager
+            // 
+            this.cbManager.DisplayMember = "ManagerName";
+            this.cbManager.FormattingEnabled = true;
+            this.cbManager.Location = new System.Drawing.Point(85, 43);
+            this.cbManager.Name = "cbManager";
+            this.cbManager.Size = new System.Drawing.Size(173, 28);
+            this.cbManager.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2032, 1128);
+            this.Controls.Add(this.gbManagerDetail);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.gbStaffDetail);
             this.Controls.Add(this.btn_CSV);
@@ -522,10 +554,12 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vwStaffBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.gbStaffDetail.ResumeLayout(false);
             this.gbStaffDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vwStaffBindingSource)).EndInit();
+            this.gbManagerDetail.ResumeLayout(false);
+            this.gbManagerDetail.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -534,20 +568,7 @@
 
         private System.Windows.Forms.DataGridView dgvMain;
         private System.Windows.Forms.Button btn_CSV;
-        private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn staffTitleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn middleInitialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phHomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phCellDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phExtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iRDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn staffTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn staffStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn managerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource vwStaffBindingSource;
         private System.Windows.Forms.GroupBox gbStaffDetail;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ComboBox cbTitle;
@@ -575,6 +596,22 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffTitleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn middleInitialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phHomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phCellDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phExtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iRDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource vwStaffBindingSource;
+        private System.Windows.Forms.GroupBox gbManagerDetail;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbManager;
     }
 }
 

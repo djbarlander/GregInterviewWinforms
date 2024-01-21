@@ -250,11 +250,11 @@
             this.gbStaffDetail.Controls.Add(this.lblFName);
             this.gbStaffDetail.Controls.Add(this.lblTitle);
             this.gbStaffDetail.Controls.Add(this.cbTitle);
-            this.gbStaffDetail.Location = new System.Drawing.Point(18, 486);
+            this.gbStaffDetail.Location = new System.Drawing.Point(18, 491);
             this.gbStaffDetail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbStaffDetail.Name = "gbStaffDetail";
             this.gbStaffDetail.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gbStaffDetail.Size = new System.Drawing.Size(1996, 505);
+            this.gbStaffDetail.Size = new System.Drawing.Size(1996, 243);
             this.gbStaffDetail.TabIndex = 4;
             this.gbStaffDetail.TabStop = false;
             this.gbStaffDetail.Text = "Staff Details";
@@ -263,7 +263,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(609, 358);
+            this.btnDelete.Location = new System.Drawing.Point(609, 174);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(106, 35);
             this.btnDelete.TabIndex = 18;
@@ -377,7 +377,7 @@
             // btnNew
             // 
             this.btnNew.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnNew.Location = new System.Drawing.Point(14, 358);
+            this.btnNew.Location = new System.Drawing.Point(14, 174);
             this.btnNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(112, 35);
@@ -389,7 +389,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.Info;
-            this.btnSave.Location = new System.Drawing.Point(456, 358);
+            this.btnSave.Location = new System.Drawing.Point(456, 174);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(112, 35);
@@ -401,7 +401,7 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnCancel.Location = new System.Drawing.Point(304, 358);
+            this.btnCancel.Location = new System.Drawing.Point(304, 174);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 35);
@@ -413,7 +413,7 @@
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEdit.Location = new System.Drawing.Point(152, 358);
+            this.btnEdit.Location = new System.Drawing.Point(152, 174);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(112, 35);
